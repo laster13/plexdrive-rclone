@@ -4,7 +4,7 @@
 echo "# unionfs_cleaner checking for updates"
 git -C /unionfs_cleaner pull
 
-# Create and chown plex_autoscan config dir
+# Create and chown unionfs_clear config dir
 mkdir -p /config/unionfs_cleaner
 chown -R root:root /config/unionfs_cleaner
 
