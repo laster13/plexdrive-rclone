@@ -1,0 +1,14 @@
+#!/usr/bin/with-contenv bash
+
+# Pull latest changes
+echo "# plex_autoscan checking for updates"
+git -C /plex_autoscan pull
+
+# Create and chown plex_autoscan config dir
+mkdir -p /config/plex_autoscan
+chown -R plex:plex /config/plex_autoscan
+
+# Link default locations to /config as a fallback
+ln -s /config/plex_autoscan/config.json /plex_autoscan/config/config.json || true
+ln -s /config/plex_autoscan/queue.db /plex_autoscan/queue.db || true
+ln -s /config/plex_autoscan/plex_autoscan.log /plex_autoscan/plex_autoscan.log || true

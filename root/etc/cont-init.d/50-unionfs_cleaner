@@ -1,0 +1,14 @@
+#!/usr/bin/with-contenv bash
+
+# Pull latest changes
+echo "# unionfs_cleaner checking for updates"
+git -C /unionfs_cleaner pull
+
+# Create and chown plex_autoscan config dir
+mkdir -p /config/unionfs_cleaner
+chown -R root:root /config/unionfs_cleaner
+
+# Link default locations to /config as a fallback
+ln -s /config/unionfs_cleaner/config.json /unionfs_cleaner/config.json || true
+ln -s /config/unionfs_cleaner/activity.log /unionfs_cleaner/activity.log || true
+

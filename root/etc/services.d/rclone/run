@@ -1,0 +1,7 @@
+#!/usr/bin/with-contenv bash
+
+echo "# rclone waiting for unionfs_cleaner service"
+s6-svwait ../unionfs_cleaner && sleep 1
+
+echo "# rclone starting..."
+exec s6-setuidgid root /bin/bash -c '/start.sh'
