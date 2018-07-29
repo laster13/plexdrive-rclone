@@ -1,7 +1,7 @@
 # Plex-Official avec Plexdrive Rclone Unionfs-fuse Plex_autoscan Unionfs_Cleaner
 
 Run example
-
+```
 docker run --name plex \
            -d \
            -e TZ=Paris/Europe \
@@ -24,4 +24,5 @@ docker run --name plex \
            --security-opt apparmor:unconfined \
            --restart=unless-stopped \
            laster13/plexdrive-rclone
+           ```
 
