@@ -2,7 +2,7 @@
 
 Run example
 
-docker run --name plex \
+*docker run --name plex \
            -d \
            -e TZ=Paris/Europe \
            -e PLEX_CLAIM="claim-ddxa9n2MX6x7xWX2dohz" \
@@ -23,5 +23,5 @@ docker run --name plex \
            --device /dev/fuse \
            --security-opt apparmor:unconfined \
            --restart=unless-stopped \
-           laster13/plexdrive-rclone
+           laster13/plexdrive-rclone*
 
