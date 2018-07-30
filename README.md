@@ -24,7 +24,7 @@ docker run --name plex \
            --security-opt apparmor:unconfined \
            --restart=unless-stopped \
            laster13/plexdrive-rclone
-           
+```           
 Sources: 
 https://github.com/Mumie-hub/docker-services/tree/master/rclone-mount
 https://bitbucket.org/sh1ny/docker-pms-plexdrive
