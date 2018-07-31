@@ -1,6 +1,6 @@
 # Plex-Official with Plexdrive 5.0 Rclone Unionfs-fuse Plex_autoscan Unionfs_Cleaner
 
-Run example
+Run exemple
 ```
 docker run --name plex \
            -d \
