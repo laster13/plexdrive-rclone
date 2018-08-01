@@ -5,3 +5,5 @@ s6-svwait ../unionfs_cleaner && sleep 1
 
 echo "# rclone starting..."
 exec s6-setuidgid plex /bin/bash -c '/start.sh'
+echo "# Unionfs starting..."
+exec s6-setuidgid plex /bin/bash -c 'unionfs-fuse -o cow -o allow_other $MountLocal=RW:$MountPoint=RO $MountUnion &'
