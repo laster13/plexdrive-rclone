@@ -36,7 +36,6 @@ trap term_handler SIGINT SIGTERM
 trap cache_handler SIGHUP
 
 #mount rclone remote and wait
-unionfs-fuse -o cow -o allow_other $MountLocal=RW:$MountPoint=RO $MountUnion &
 rclone --config=/config/.rclone.conf mount $RemotePath $MountPoint $MountCommands & wait ${!}
 echo "rclone crashed at: $(date +%Y.%m.%d-%T)"
 fuse_unmount
