@@ -1,9 +1,5 @@
 #!/usr/bin/with-contenv bash
 
-mkdir -p $MountPoint
-mkdir -p $MountLocal
-mkdir -p $MountUnion
-
 # mkdir -p $ConfigDir
 
 # ConfigPath="$ConfigDir/$ConfigName"
@@ -36,7 +32,7 @@ trap term_handler SIGINT SIGTERM
 trap cache_handler SIGHUP
 
 #mount rclone remote and wait
-rclone --config=/config/.rclone.conf mount $RemotePath $MountPoint $MountCommands & wait ${!}
+rclone --config=/config/.config/rclone/rclone.conf mount $RemotePath $MountPoint $MountCommands & wait ${!}
 echo "rclone crashed at: $(date +%Y.%m.%d-%T)"
 fuse_unmount
 

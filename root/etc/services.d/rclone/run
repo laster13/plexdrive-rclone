@@ -1,9 +1,15 @@
 #!/usr/bin/with-contenv bash
 
+mkdir -p $MountPoint
+mkdir -p $MountLocal
+mkdir -p $MountUnion
+
+
 echo "# rclone waiting for unionfs_cleaner service"
 s6-svwait ../unionfs_cleaner && sleep 1
 
-echo "# rclone starting..."
-exec s6-setuidgid plex /bin/bash -c '/start.sh'
 echo "# Unionfs starting..."
-exec s6-setuidgid plex /bin/bash -c 'unionfs-fuse -o cow -o allow_other $MountLocal=RW:$MountPoint=RO $MountUnion'
+exec s6-setuidgid root /bin/bash -c 'unionfs-fuse -o cow -o allow_other $MountLocal=RW:$MountPoint=RO $MountUnion' &
+
+echo "# rclone starting..."
+exec s6-setuidgid root /bin/bash -c '/start.sh'
