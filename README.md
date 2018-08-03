@@ -21,6 +21,7 @@ docker run --name plex \
            --cap-add MKNOD \
            --cap-add SYS_ADMIN \
            --device /dev/fuse \
+           --privileged \
            --security-opt apparmor:unconfined \
            --restart=unless-stopped \
            laster13/plexdrive-rclone
