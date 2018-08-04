@@ -13,8 +13,8 @@ ENV \
   # Plex_autoscan log file
   PLEX_AUTOSCAN_LOGFILE=/config/plex_autoscan/plex_autoscan.log \
   # Plex_autoscan disable docker and sudo
-  USE_DOCKER=true \
-  USE_SUDO=false
+  USE_DOCKER=false \
+  USE_SUDO=true
 
 COPY root/ /
 
