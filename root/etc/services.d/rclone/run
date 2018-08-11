@@ -3,6 +3,7 @@
 mkdir -p $MountPoint
 mkdir -p $MountLocal
 mkdir -p $MountUnion
+mkdir -p $MountLocal/.unionfs-fuse
 
 
 echo "# rclone waiting for unionfs_cleaner service"
