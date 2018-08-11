@@ -1,9 +1,5 @@
 #!/usr/bin/with-contenv bash
 
-# mkdir -p $ConfigDir
-
-# ConfigPath="$ConfigDir/$ConfigName"
-
 echo "=================================================="
 echo "Mounting $RemotePath to $MountPoint at: $(date +%Y.%m.%d-%T)"
 
