@@ -3,16 +3,18 @@ FROM plexinc/pms-docker:public
 ENTRYPOINT ["/init"]
 
 ENV \
+  RemotePath="GDD_Enc:/" \
+  MountPoint="/mnt/rclone" \
+  MountLocal="/mnt/Pre" \
+  MountUnion="/mnt/Union" \
+  MountCommands="--allow-other --allow-non-empty" \
+  UnmountCommands="-u -z" \
   PLEXDRIVE_CONFIG_DIR=".plexdrive" \
   CHANGE_PLEXDRIVE_CONFIG_DIR_OWNERSHIP="true" \
   PLEXDRIVE_MOUNT_POINT="/home/Plex" \
-  # Plex_autoscan config file
   PLEX_AUTOSCAN_CONFIG=/config/plex_autoscan/config.json \
-  # Plex_autoscan queue db file
   PLEX_AUTOSCAN_QUEUEFILE=/config/plex_autoscan/queue.db \
-  # Plex_autoscan log file
   PLEX_AUTOSCAN_LOGFILE=/config/plex_autoscan/plex_autoscan.log \
-  # Plex_autoscan disable docker and sudo
   USE_DOCKER=false \
   USE_SUDO=false
 
