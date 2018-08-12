@@ -1,0 +1,15 @@
+#!/usr/bin/with-contenv bash
+
+# Pull latest changes
+echo "# plex_dupefinder checking for updates"
+git -C /plex_dupefinder pull
+
+# Create and chown plex_dupefinder config dir
+mkdir -p /config/plex_dupefinder
+chown -R root:root /config/plex_dupefinder
+
+# Link default locations to /config as a fallback
+ln -s /config/plex_dupefinder/config.json /plex_dupefinder/config.json || true
+ln -s /config/plex_dupefinder/activity.log /plex_dupefinder/activity.log || true
+ln -s /config/plex_dupefinder/decisions.log /plex_dupefinder/decisions.log || true
+
