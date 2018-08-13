@@ -18,7 +18,13 @@ ENV \
   USE_DOCKER=false \
   USE_SUDO=false
 
-COPY root/ /
+LABEL Description="Plex Plexdrive Rclone Plex_autoscan Unionfs_cleaner Plex_dupefinder" \
+      tags="latest" \
+      maintainer="laster13 <https://github.com/laster13>" \
+      Plex_autoscan="https://github.com/l3uddz/plex_autoscan" \
+      Unionfs_cleaner="https://github.com/l3uddz/unionfs_cleaner" \
+      Plex_dupefinder="https://github.com/l3uddz/plex_dupefinder" \
+      Plexdrive-5.0.0="https://github.com/dweidenfeld/plexdrive"
 
 RUN \
   # Install dependencies
@@ -37,9 +43,7 @@ RUN \
     wget \
     python3-setuptools \
     g++ && \
-  # Install plexdrive
   echo "user_allow_other" > /etc/fuse.conf && \
-  /plexdrive-install.sh && \
   # Get plex_autoscan, unionfs_cleaner and plex_dupefinder
   git clone --depth 1 --single-branch https://github.com/l3uddz/unionfs_cleaner.git /unionfs_cleaner && \
   git clone --depth 1 --single-branch https://github.com/l3uddz/plex_autoscan.git /plex_autoscan && \
@@ -62,7 +66,6 @@ RUN \
     python3.5-dev \
     unzip \
     man.db \
-    wget \
     python3-setuptools \
     g++ && \
   # Clean apt cache
@@ -72,15 +75,14 @@ RUN \
     /var/lib/apt/lists/* \
     /var/tmp/*
 
-ADD start.sh /start.sh
-RUN chmod +x /start.sh
+COPY root/ /
 
-# Create the log file to be able to run plex_dupefinder
-COPY crontab /etc/cron.d/crontab
-RUN touch /var/log/cron.log
+RUN chmod +x /start.sh && \
+    /plexdrive-install.sh && \
+    touch /var/log/cron.log
 
 # Run the command on container startup
 CMD cron && tail -f /var/log/cron.log
-
+    
 HEALTHCHECK --interval=3m --timeout=100s \
 CMD test -r $(find ${PLEXDRIVE_MOUNT_POINT} -maxdepth 1 -print -quit) && /healthcheck.sh || exit 1
