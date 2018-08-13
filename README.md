@@ -37,6 +37,32 @@ services:
       - /mnt/docker/Plex/rclone:/mnt/rclone:shared
       - /mnt/docker/Plex/Pre:/mnt/Pre:shared
 ```           
+# Host folder structure example
+
+Docker Data
+├── pms-docker
+│   ├── config
+│   │   ├── Library
+|   |   |   └── ...
+│   │   │
+│   │   ├── .plexdrive
+│   │   |   └── ...
+|   |   | 
+|   |   ├── Rclone
+|   |   |   └── ...
+|   |   |
+|   |   ├── Plex_autoscan
+|   |   |   └── ...
+|   |   |
+|   |   ├── Unionfs_cleaner
+|   |   |   └── ...
+|   |   |
+|   |   ├── Plex_dupefinder
+|   |       └── ...
+|   |   
+│   └── transcode
+└──
+...
 
 # Démo
 
