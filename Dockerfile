@@ -37,9 +37,10 @@ RUN \
     wget \
     python3-setuptools \
     g++ && \
-  # Get plex_autoscan
+  # Install plexdrive
   echo "user_allow_other" > /etc/fuse.conf && \
   /plexdrive-install.sh && \
+  # Get plex_autoscan, unionfs_cleaner and plex_dupefinder
   git clone --depth 1 --single-branch https://github.com/l3uddz/unionfs_cleaner.git /unionfs_cleaner && \
   git clone --depth 1 --single-branch https://github.com/l3uddz/plex_autoscan.git /plex_autoscan && \
   git clone --depth 1 --single-branch https://github.com/l3uddz/plex_dupefinder.git && \
