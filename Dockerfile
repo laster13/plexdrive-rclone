@@ -73,5 +73,12 @@ RUN \
 ADD start.sh /start.sh
 RUN chmod +x /start.sh
 
+# Create the log file to be able to run plex_dupefinder
+COPY crontab /etc/cron.d/crontab
+RUN touch /var/log/cron.log
+
+# Run the command on container startup
+CMD cron && tail -f /var/log/cron.log
+
 HEALTHCHECK --interval=3m --timeout=100s \
 CMD test -r $(find ${PLEXDRIVE_MOUNT_POINT} -maxdepth 1 -print -quit) && /healthcheck.sh || exit 1
