@@ -62,7 +62,6 @@ Docker Data
 |   |   
 │   └── transcode
 └──
-...
 
 # Démo
 
