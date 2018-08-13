@@ -36,9 +36,30 @@ services:
       - /dev/shm:/transcode
       - /mnt/docker/Plex/rclone:/mnt/rclone:shared
       - /mnt/docker/Plex/Pre:/mnt/Pre:shared
-```    
+``` 
+
+# Variables d'environnement
+
+```
+PLEXDRIVE_CONFIG_DIR="/.plexdrive"                  # Dossier de config par default de Plexdrive
+PLEXDRIVE_MOUNT_POINT="/home/Plex"                  # Montage chiffré de plexdrive, par defaut /home/Plex
+RemotePath="GDD_Enc:/"                              # Remote chiffré rclone
+MountPoint="/mnt/rclone"                            # Point de montage non chiffré rclone
+MountLocal="/mnt/Pre"                               # Dossier local
+MountUnion="/mnt/Union"                             # Dossier Union pour Unionfs-fuse
+MountCommands="--allow-other --allow-non-empty"     # Options de montage rclone
+UnmountCommands="-u -z"                             # Commandes pour fusermount
+
+
+    environment:
+      - RemotePath="GDD_Enc:/"
+      - MountPoint="/mnt/rclone"
+      - MountPoint="/mnt/rclone" 
+      └── ...
+```
 
 # Host folder structure example
+
 ```
 Docker Data
 ├── pms-docker
@@ -65,6 +86,6 @@ Docker Data
 └──
 ```
 
-# Démo <h1>
+# Démo
 
 [![asciicast](https://asciinema.org/a/ByqEAq3tpxn3lIw8mfUvaJ68L.png)](https://asciinema.org/a/ByqEAq3tpxn3lIw8mfUvaJ68L?autoplay=1)
