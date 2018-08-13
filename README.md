@@ -38,7 +38,7 @@ services:
       - /mnt/docker/Plex/Pre:/mnt/Pre:shared
 ```           
 # Host folder structure example
-
+```
 Docker Data
 ├── pms-docker
 │   ├── config
@@ -62,7 +62,7 @@ Docker Data
 |   |   
 │   └── transcode
 └──
-
+```
 # Démo
 
 [![asciicast](https://asciinema.org/a/ByqEAq3tpxn3lIw8mfUvaJ68L.png)](https://asciinema.org/a/ByqEAq3tpxn3lIw8mfUvaJ68L?autoplay=1)
