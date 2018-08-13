@@ -30,7 +30,7 @@ services:
       - /mnt/docker/Plex/Pre:/mnt/Pre:shared
 ```           
 
-#Démo
+# Démo
 
 <a href="https://asciinema.org/a/ByqEAq3tpxn3lIw8mfUvaJ68L?autoplay=1" target="_blank"><img src="https://asciinema.org/a/ByqEAq3tpxn3lIw8mfUvaJ68L.png" /></a>
 
