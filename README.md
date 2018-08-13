@@ -36,7 +36,8 @@ services:
       - /dev/shm:/transcode
       - /mnt/docker/Plex/rclone:/mnt/rclone:shared
       - /mnt/docker/Plex/Pre:/mnt/Pre:shared
-```           
+```    
+
 # Host folder structure example
 ```
 Docker Data
@@ -48,21 +49,22 @@ Docker Data
 │   │   ├── .plexdrive
 │   │   |   └── ...
 |   |   | 
-|   |   ├── Rclone
+|   |   ├── rclone
 |   |   |   └── ...
 |   |   |
-|   |   ├── Plex_autoscan
+|   |   ├── plex_autoscan
 |   |   |   └── ...
 |   |   |
-|   |   ├── Unionfs_cleaner
+|   |   ├── unionfs_cleaner
 |   |   |   └── ...
 |   |   |
-|   |   ├── Plex_dupefinder
+|   |   ├── plex_dupefinder
 |   |       └── ...
 |   |   
 │   └── transcode
 └──
 ```
-# Démo
+
+# Démo <h1>
 
 [![asciicast](https://asciinema.org/a/ByqEAq3tpxn3lIw8mfUvaJ68L.png)](https://asciinema.org/a/ByqEAq3tpxn3lIw8mfUvaJ68L?autoplay=1)
