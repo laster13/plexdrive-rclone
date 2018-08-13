@@ -27,6 +27,7 @@ RUN \
   apt-get install --no-install-recommends -y \
     git \
     lsof \
+    cron \
     python3-pip \
     python3.5-dev \
     unionfs-fuse \
