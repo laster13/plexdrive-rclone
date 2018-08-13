@@ -1,10 +1,10 @@
 # Plex-Official with 
-Plexdrive-5.0.0
-Rclone V1.42
-Unionfs-fuse 
-Plex_autoscan 
-Unionfs_Cleaner
-Plex_dupefinder
+* Plexdrive-5.0.0
+* Rclone V1.42
+* Unionfs-fuse 
+* Plex_autoscan 
+* Unionfs_Cleaner
+* Plex_dupefinder
 
 Exemple docker-compose.yml
 ```
