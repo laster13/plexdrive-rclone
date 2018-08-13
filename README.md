@@ -1,11 +1,11 @@
 # Plex-Official
 https://github.com/plexinc/pms-docker
-* Plexdrive-5.0.0
-* Rclone V1.42
-* Unionfs-fuse 
-* Plex_autoscan 
-* Unionfs_Cleaner
-* Plex_dupefinder
+* Plexdrive-5.0.0 https://github.com/dweidenfeld/plexdrive
+* Rclone V1.42    https://rclone.org/
+* Unionfs-fuse    http://manpages.ubuntu.com/manpages/precise/man8/unionfs-fuse.8.html
+* Plex_autoscan   https://github.com/l3uddz/plex_autoscan
+* Unionfs_Cleaner https://github.com/l3uddz/unionfs_cleaner
+* Plex_dupefinder https://github.com/l3uddz/plex_dupefinder
 
 
 Exemple docker-compose.yml
