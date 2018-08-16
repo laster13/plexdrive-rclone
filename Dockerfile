@@ -84,5 +84,5 @@ RUN chmod +x /start.sh && \
 # Run the command on container startup
 CMD cron && tail -f /var/log/cron.log
     
-HEALTHCHECK --interval=1m --timeout=100s \
+HEALTHCHECK --interval=3m --timeout=100s \
 CMD test -r $(find ${PLEXDRIVE_MOUNT_POINT} -maxdepth 1 -print -quit) && /healthcheck.sh || exit 1
