@@ -61,7 +61,6 @@ RUN \
   sed -i -e "s/import Queue/import queue/g" threads.py && \
   sed -i -e "s/self._waiter_queue = Queue.PriorityQueue()/self._waiter_queue = queue.PriorityQueue()/g" threads.py && \
   sed -i -e "s/from urllib import urlencode/from urllib.parse import urlencode/g" gdrive.py && \
-  sed -i -e "s/usr/bin/env python2.7/usr/bin/env python3/g" scan.py && \
   # Remove dependencies
   apt-get purge -y --auto-remove \
     python3.5-dev \
