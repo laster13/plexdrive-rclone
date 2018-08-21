@@ -27,7 +27,7 @@ services:
       - apparmor:unconfined
     environment:
       - TZ=Paris/Europe
-      - PLEX_CLAIM=claim-j3ScQyzZwujhyVUP56FJ
+      - PLEX_CLAIM=
       - PLEX_UID=0
       - PLEX_GID=0
     hostname: mail
