@@ -34,6 +34,8 @@ RUN \
     git \
     lsof \
     cron \
+    python-pip \
+    python-dev \
     python3-pip \
     python3.5-dev \
     unionfs-fuse \
@@ -49,21 +51,19 @@ RUN \
   git clone --depth 1 --single-branch https://github.com/l3uddz/plex_autoscan.git /plex_autoscan && \
   git clone --depth 1 --single-branch https://github.com/l3uddz/plex_dupefinder.git && \
   curl https://rclone.org/install.sh | bash && \
-  # Install/update pip and requirements
-  pip3 install --no-cache-dir --upgrade pip setuptools wheel && \
+  # Install/update pip and requirements for plex_autoscan
+  pip install --no-cache-dir --upgrade pip setuptools wheel && \
   # PIP upgrade bug https://github.com/pypa/pip/issues/5221
   hash -r pip && \
+  # install unionfs_cleaner && plex_dupefinder with python3
   pip3 install --no-cache-dir --upgrade -r /unionfs_cleaner/requirements.txt && \
   pip3 install --no-cache-dir --upgrade -r /plex_dupefinder/requirements.txt && \
-  pip3 install --no-cache-dir --upgrade -r /plex_autoscan/requirements.txt && \
-  # update plex_autoscan with python3.5
-  cd /plex_autoscan && \
-  sed -i -e "s/import Queue/import queue/g" threads.py && \
-  sed -i -e "s/self._waiter_queue = Queue.PriorityQueue()/self._waiter_queue = queue.PriorityQueue()/g" threads.py && \
-  sed -i -e "s/from urllib import urlencode/from urllib.parse import urlencode/g" gdrive.py && \
+  # Plex_autoscan only works with python2.7
+  pip install --no-cache-dir --upgrade -r /plex_autoscan/requirements.txt && \
   # Remove dependencies
   apt-get purge -y --auto-remove \
     python3.5-dev \
+    python-dev \
     unzip \
     man.db \
     python3-setuptools \
