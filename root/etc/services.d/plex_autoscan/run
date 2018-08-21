@@ -4,4 +4,4 @@ echo "# plex_autoscan waiting for Plex service"
 s6-svwait ../plex && sleep 1
 
 echo "# plex_autoscan starting..."
-exec s6-setuidgid plex /bin/bash -c 'python3 /plex_autoscan/scan.py server'
+exec s6-setuidgid plex /bin/bash -c 'python /plex_autoscan/scan.py server'
