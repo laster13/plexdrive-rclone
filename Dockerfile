@@ -10,7 +10,7 @@ ENV \
   MountCommands="--allow-other --allow-non-empty" \
   UnmountCommands="-u -z" \
   PLEXDRIVE_CONFIG_DIR=".plexdrive" \
-  PLEXDRIVE_MOUNT_POINT="/mnt/plexdrive" \
+  PLEXDRIVE_MOUNT_POINT="/home/plexdrive" \
   PLEX_AUTOSCAN_CONFIG=/config/plex_autoscan/config.json \
   PLEX_AUTOSCAN_QUEUEFILE=/config/plex_autoscan/queue.db \
   PLEX_AUTOSCAN_LOGFILE=/config/plex_autoscan/plex_autoscan.log \
