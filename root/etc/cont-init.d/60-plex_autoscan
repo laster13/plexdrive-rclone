@@ -6,7 +6,7 @@ git -C /plex_autoscan pull
 
 # Create and chown plex_autoscan config dir
 mkdir -p /config/plex_autoscan
-chown -R plex:plex /config/plex_autoscan
+chown -R root:root /config/plex_autoscan
 
 # Link default locations to /config as a fallback
 ln -s /config/plex_autoscan/config.json /plex_autoscan/config/config.json || true

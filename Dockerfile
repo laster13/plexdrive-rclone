@@ -1,4 +1,4 @@
-FROM plexinc/pms-docker:public
+FROM ubuntu:16.04
 
 ENTRYPOINT ["/init"]
 
@@ -10,14 +10,20 @@ ENV \
   MountCommands="--allow-other --allow-non-empty" \
   UnmountCommands="-u -z" \
   PLEXDRIVE_CONFIG_DIR=".plexdrive" \
-  CHANGE_PLEXDRIVE_CONFIG_DIR_OWNERSHIP="true" \
-  PLEXDRIVE_MOUNT_POINT="/home/Plex" \
+  PLEXDRIVE_MOUNT_POINT="/mnt/plexdrive" \
   PLEX_AUTOSCAN_CONFIG=/config/plex_autoscan/config.json \
   PLEX_AUTOSCAN_QUEUEFILE=/config/plex_autoscan/queue.db \
   PLEX_AUTOSCAN_LOGFILE=/config/plex_autoscan/plex_autoscan.log \
   USE_DOCKER=false \
-  USE_SUDO=false
+  USE_SUDO=false \
+  ConfigDir="/config" \
+  ConfigName=".rclone.conf" \
+  TERM="xterm" LANG="C.UTF-8" LC_ALL="C.UTF-8"
 
+
+ARG S6_OVERLAY_VERSION=v1.17.2.0
+ARG DEBIAN_FRONTEND="noninteractive"
+    
 LABEL Description="Plex Plexdrive Rclone Plex_autoscan Unionfs_cleaner Plex_dupefinder" \
       tags="latest" \
       maintainer="laster13 <https://github.com/laster13>" \
@@ -32,6 +38,8 @@ RUN \
   apt-get full-upgrade -y && \
   apt-get install --no-install-recommends -y \
     git \
+    curl \
+    bash \
     lsof \
     cron \
     python-pip \
@@ -44,7 +52,13 @@ RUN \
     fuse \
     wget \
     python3-setuptools \
+    tzdata \
+    xmlstarlet \
+    uuid-runtime \
+    unrar \
     g++ && \
+  curl -J -L -o /tmp/s6-overlay-amd64.tar.gz https://github.com/just-containers/s6-overlay/releases/download/${S6_OVERLAY_VERSION}/s6-overlay-amd64.tar.gz && \
+  tar xzf /tmp/s6-overlay-amd64.tar.gz -C / && \
   echo "user_allow_other" > /etc/fuse.conf && \
   # Get plex_autoscan, unionfs_cleaner and plex_dupefinder
   git clone --depth 1 --single-branch https://github.com/l3uddz/unionfs_cleaner.git /unionfs_cleaner && \
@@ -67,6 +81,7 @@ RUN \
     unzip \
     man.db \
     python3-setuptools \
+    unrar \
     g++ && \
   # Clean apt cache
   apt-get clean all && \
@@ -78,11 +93,13 @@ RUN \
 COPY root/ /
 
 RUN chmod +x /start.sh && \
+    chmod +x /plexdrive-install.sh && \
     /plexdrive-install.sh && \
     touch /var/log/cron.log
 
 # Run the command on container startup
 CMD cron && tail -f /var/log/cron.log
-    
+
+
 HEALTHCHECK --interval=3m --timeout=100s \
-CMD test -r $(find ${PLEXDRIVE_MOUNT_POINT} -maxdepth 1 -print -quit) && /healthcheck.sh || exit 1
+CMD test -r $(find ${PLEXDRIVE_MOUNT_POINT} -maxdepth 1 -print -quit) || exit 1
