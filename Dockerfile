@@ -16,7 +16,7 @@ ENV \
   PLEX_AUTOSCAN_LOGFILE=/config/plex_autoscan/plex_autoscan.log \
   USE_DOCKER=false \
   USE_SUDO=false \
-  ConfigDir="/config/.config" \
+  ConfigDir="/config/.config/rclone/" \
   ConfigName="rclone.conf" \
   TERM="xterm" LANG="C.UTF-8" LC_ALL="C.UTF-8"
 
