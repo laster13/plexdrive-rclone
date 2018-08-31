@@ -4,4 +4,4 @@ echo "Starting Plexdrive"
 
 exec s6-setuidgid root \
       /bin/sh -c \
-        "/usr/local/bin/plexdrive mount -v 2 -c /mnt/plexdrive/${PLEXDRIVE_CONFIG_DIR} --cache-file=/mnt/plexdrive/${PLEXDRIVE_CONFIG_DIR}/cache.bolt -o allow_other ${PLEXDRIVE_MOUNT_POINT}"
+        "/usr/local/bin/plexdrive mount -v 2 -c /config/.config/plexdrive/${PLEXDRIVE_CONFIG_DIR} --cache-file=/config/.config/plexdrive/${PLEXDRIVE_CONFIG_DIR}/cache.bolt -o allow_other ${PLEXDRIVE_MOUNT_POINT}"
