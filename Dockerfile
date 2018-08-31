@@ -14,7 +14,7 @@ ENV \
   PLEX_AUTOSCAN_CONFIG=/config/plex_autoscan/config.json \
   PLEX_AUTOSCAN_QUEUEFILE=/config/plex_autoscan/queue.db \
   PLEX_AUTOSCAN_LOGFILE=/config/plex_autoscan/plex_autoscan.log \
-  USE_DOCKER=false \
+  USE_DOCKER=true \
   USE_SUDO=false \
   ConfigDir="/config/.config/rclone/" \
   ConfigName="rclone.conf" \
