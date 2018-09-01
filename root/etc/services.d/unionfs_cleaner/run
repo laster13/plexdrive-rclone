@@ -2,4 +2,4 @@
 
 echo "# unionfs_cleaner starting..."
 cd /unionfs_cleaner
-exec s6-setuidgid root /bin/bash -c 'python3.5 /unionfs_cleaner/cleaner.py server'
+exec s6-setuidgid root /bin/bash -c 'python3 /unionfs_cleaner/cleaner.py server'
