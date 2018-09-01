@@ -1,1 +1,0 @@
-*/50 * * * * root  python3 /plex_dupefinder/plexdupes.py >> /var/log/cron.log 2>&1
