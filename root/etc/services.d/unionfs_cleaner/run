@@ -1,8 +1,5 @@
 #!/usr/bin/with-contenv bash
 
-echo "# unionfs_cleaner waiting for plex_autoscan service"
-s6-svwait ../plex_autoscan && sleep 1
-
 echo "# unionfs_cleaner starting..."
 cd /unionfs_cleaner
 exec s6-setuidgid root /bin/bash -c 'python3.5 /unionfs_cleaner/cleaner.py server'
