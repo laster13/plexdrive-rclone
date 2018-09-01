@@ -53,10 +53,6 @@ RUN \
   # Get plex_autoscan, unionfs_cleaner and plex_dupefinder
   git clone --depth 1 --single-branch https://github.com/l3uddz/unionfs_cleaner.git /unionfs_cleaner && \
   curl https://rclone.org/install.sh | bash && \
-  # Install/update pip and requirements for plex_autoscan
-  pip install --no-cache-dir --upgrade pip setuptools wheel && \
-  # PIP upgrade bug https://github.com/pypa/pip/issues/5221
-  hash -r pip && \
   # install unionfs_cleaner && plex_dupefinder with python3
   pip3 install --no-cache-dir --upgrade -r /unionfs_cleaner/requirements.txt && \
   # Remove dependencies
