@@ -11,7 +11,7 @@ ENV \
   UnmountCommands="-u -z" \
   PLEXDRIVE_CONFIG_DIR=".plexdrive" \
   PLEXDRIVE_MOUNT_POINT="/home/plexdrive" \
-  ConfigDir="~/.config/rclone/" \
+  ConfigDir="/root/.config/rclone/" \
   ConfigName="rclone.conf" \
   TERM="xterm" LANG="C.UTF-8" LC_ALL="C.UTF-8"
 
