@@ -1,4 +1,0 @@
-#!/usr/bin/with-contenv bash
-
-echo "# plex_autoscan starting..."
-exec s6-setuidgid root /bin/bash -c 'python /plex_autoscan/scan.py server'
