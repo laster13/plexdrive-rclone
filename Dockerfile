@@ -76,5 +76,5 @@ RUN chmod +x /start.sh && \
     chmod +x /plexdrive-install.sh && \
     /plexdrive-install.sh
 
-HEALTHCHECK --interval=3m --timeout=100s \
+HEALTHCHECK --interval=10s --timeout=10s \
 CMD test -r $(find ${PLEXDRIVE_MOUNT_POINT} -maxdepth 1 -print -quit) || exit 1
