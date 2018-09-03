@@ -15,7 +15,6 @@ ENV \
   ConfigName="rclone.conf" \
   TERM="xterm" LANG="C.UTF-8" LC_ALL="C.UTF-8"
 
-
 ARG S6_OVERLAY_VERSION=v1.17.2.0
 ARG DEBIAN_FRONTEND="noninteractive"
     
@@ -26,7 +25,6 @@ LABEL Description="Plexdrive Rclone Unionfs_cleaner" \
       Plexdrive-5.0.0="https://github.com/dweidenfeld/plexdrive"
 
 RUN \
-  # Install dependencies
   apt-get update && \
   apt-get full-upgrade -y && \
   apt-get install --no-install-recommends -y \
@@ -50,12 +48,9 @@ RUN \
   curl -J -L -o /tmp/s6-overlay-amd64.tar.gz https://github.com/just-containers/s6-overlay/releases/download/${S6_OVERLAY_VERSION}/s6-overlay-amd64.tar.gz && \
   tar xzf /tmp/s6-overlay-amd64.tar.gz -C / && \
   echo "user_allow_other" > /etc/fuse.conf && \
-  # Get plex_autoscan, unionfs_cleaner and plex_dupefinder
   git clone --depth 1 --single-branch https://github.com/l3uddz/unionfs_cleaner.git /unionfs_cleaner && \
   curl https://rclone.org/install.sh | bash && \
-  # install unionfs_cleaner && plex_dupefinder with python3
   pip3 install --no-cache-dir --upgrade -r /unionfs_cleaner/requirements.txt && \
-  # Remove dependencies
   apt-get purge -y --auto-remove \
     python3.5-dev \
     unzip \
@@ -63,7 +58,6 @@ RUN \
     python3-setuptools \
     unrar \
     g++ && \
-  # Clean apt cache
   apt-get clean all && \
   rm -rf \
     /tmp/* \
