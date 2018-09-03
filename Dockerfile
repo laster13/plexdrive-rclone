@@ -11,7 +11,7 @@ ENV \
   UnmountCommands="-u -z" \
   PLEXDRIVE_CONFIG_DIR=".plexdrive" \
   PLEXDRIVE_MOUNT_POINT="/home/plexdrive" \
-  ConfigDir="/root/.config/rclone/" \
+  ConfigDir="/config/.config/rclone/" \
   ConfigName="rclone.conf" \
   TERM="xterm" LANG="C.UTF-8" LC_ALL="C.UTF-8"
 
@@ -70,5 +70,5 @@ RUN chmod +x /start.sh && \
     chmod +x /plexdrive-install.sh && \
     /plexdrive-install.sh
 
-HEALTHCHECK --interval=3m --timeout=100s \
+HEALTHCHECK --interval=30s --timeout=30s \
 CMD test -r $(find ${PLEXDRIVE_MOUNT_POINT} -maxdepth 1 -print -quit) || exit 1

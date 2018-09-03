@@ -31,7 +31,7 @@ trap term_handler SIGINT SIGTERM
 trap cache_handler SIGHUP
 
 #mount rclone remote and wait
-rclone mount $RemotePath $MountPoint $MountCommands & wait ${!}
+rclone mount --config=/config/.config/rclone/rclone.conf $RemotePath $MountPoint $MountCommands & wait ${!}
 echo "rclone crashed at: $(date +%Y.%m.%d-%T)"
 fuse_unmount
 
