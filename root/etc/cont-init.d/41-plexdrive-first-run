@@ -4,8 +4,8 @@
 if [ -e /.firstPlexdriveRunComplete ]; then
   exit 0
 fi
-mkdir -p /root/.config/${PLEXDRIVE_CONFIG_DIR}
-configSubDir="/root/.config/${PLEXDRIVE_CONFIG_DIR}"
+mkdir -p /config/.config/${PLEXDRIVE_CONFIG_DIR}
+configSubDir="/config/.config/${PLEXDRIVE_CONFIG_DIR}"
 
 # Update ownership of dirs we need to write
 chown -Rc root:root ${configSubDir}
