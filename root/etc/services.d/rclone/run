@@ -4,10 +4,6 @@ mkdir -p $MountPoint
 mkdir -p $MountLocal
 mkdir -p $MountUnion
 mkdir -p $MountLocal/.unionfs-fuse
-mkdir -p $MountLocal/Movies
-mkdir -p $MountLocal/TV
-mkdir -p $MountLocal/Music
-mkdir -p $MountLocal/Animes
 
 echo "# rclone waiting for unionfs_cleaner service"
 s6-svwait ../unionfs_cleaner && sleep 1
