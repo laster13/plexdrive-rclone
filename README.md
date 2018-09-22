@@ -1,18 +1,16 @@
 * Plexdrive-5.0.0 https://github.com/dweidenfeld/plexdrive
-* Rclone V1.42    https://github.com/Mumie-hub/docker-services/tree/master/rclone-mount
+* Rclone V1.43    https://github.com/Mumie-hub/docker-services/tree/master/rclone-mount
 * Unionfs-fuse    http://manpages.ubuntu.com/manpages/precise/man8/unionfs-fuse.8.html
-* Plex_autoscan   https://github.com/l3uddz/plex_autoscan
 * Unionfs_Cleaner https://github.com/l3uddz/unionfs_cleaner
-* Plex_dupefinder https://github.com/l3uddz/plex_dupefinder
 
 
-Exemple docker-compose.yml
+# Exemple docker-compose.yml
 ```
-version: '2.1'
+version: '3'
 services:
 
   plex:
-    container_name: plex
+    container_name: plexdrive
     image: laster13/plexdrive-rclone
     restart: unless-stopped
     network_mode: host
@@ -32,7 +30,7 @@ services:
     volumes:
       - /mnt/docker/Plex/config:/config
       - /dev/shm:/transcode
-      - /mnt/docker/Plex/rclone:/mnt/rclone:shared
+      - /mnt/docker/Plex/rclone:/mnt/Union:shared
       - /mnt/docker/Plex/Pre:/mnt/Pre:shared
 ``` 
 
