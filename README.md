@@ -1,5 +1,3 @@
-# Plex-Official
-https://github.com/plexinc/pms-docker
 * Plexdrive-5.0.0 https://github.com/dweidenfeld/plexdrive
 * Rclone V1.42    https://github.com/Mumie-hub/docker-services/tree/master/rclone-mount
 * Unionfs-fuse    http://manpages.ubuntu.com/manpages/precise/man8/unionfs-fuse.8.html
@@ -42,8 +40,8 @@ services:
 
 ```
 PLEXDRIVE_CONFIG_DIR="/.plexdrive"                  # Dossier de config par default de Plexdrive
-PLEXDRIVE_MOUNT_POINT="/home/Plex"                  # Montage chiffré de plexdrive, par defaut /home/Plex
-RemotePath="GDD_Enc:/"                              # Remote chiffré rclone
+PLEXDRIVE_MOUNT_POINT="/home/plexdrive"             # Montage chiffré de plexdrive, par defaut /home/Plex
+RemotePath="google:/"                              # Remote chiffré rclone (pointe vers /home/plexdrive
 MountPoint="/mnt/rclone"                            # Point de montage non chiffré rclone
 MountLocal="/mnt/Pre"                               # Dossier local
 MountUnion="/mnt/Union"                             # Dossier Union pour Unionfs-fuse
@@ -52,7 +50,7 @@ UnmountCommands="-u -z"                             # Commandes pour fusermount
 
 
     environment:
-      - RemotePath="GDD_Enc:/"
+      - RemotePath="google:/"
       - MountPoint="/mnt/rclone"
       - MountPoint="/mnt/rclone" 
       └── ...
@@ -62,28 +60,18 @@ UnmountCommands="-u -z"                             # Commandes pour fusermount
 
 ```
 Docker Data
-├── pms-docker
+├── plexdrive
 │   ├── config
-│   │   ├── Library
-|   |   |   └── ...
-│   │   │
-│   │   ├── .plexdrive
-│   │   |   └── ...
-|   |   | 
-|   |   ├── rclone
-|   |   |   └── ...
-|   |   |
-|   |   ├── plex_autoscan
-|   |   |   └── ...
-|   |   |
+│   │   |── .config
+│   │   |   ├── .plexdrive
+│   │   |   |   └── ...
+|   |   |   | 
+|   |   |   ├── rclone
+|   |   |   |   └── ...
+|   |   |   |
 |   |   ├── unionfs_cleaner
 |   |   |   └── ...
-|   |   |
-|   |   ├── plex_dupefinder
-|   |       └── ...
-|   |   
-│   └── transcode
-└──
+
 ```
 
 # Démo
